@@ -1,18 +1,41 @@
 <!-- <router-outlet></router-outlet> -->
 
-<div class="card border-cyan-500" id="center">
-  <ul *ngFor="let message of messageList" class="list-group list-group-flush">
-    <li>
-      {{ message }}
-    </li>
-  </ul>
-
-  <input
-
-    [(ngModel)]="newMessage"
-    (keyup)="$event.keyCode == 10 && sendMessage()"
-  />
-  <button class="btn" (click)="sendMessage()">Send Message</button>
+<div
+  class="card border-2 shadow-1 border-round border-gray-300 h-screen px-1 lg:col-6 md:col-9 col-11 mt-0 relative bg-white overflow-y-auto"
+  id="center"
+>
+  <h2 class="text-center pt-1 mt-0 text-green-400">Socket.io</h2>
+  <div class="mt-2 px-1">
+    <ul *ngFor="let message of messageList" class="list-none mx-0 px-0 my-1">
+      <li style="display: block !important">
+        <div
+          class="text-green-400 border-round py-1 px-2 font-bold shadow-5"
+          style="background-color: #FAFAFA;"
+        >
+          {{ message }}
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="grid">
+    <div class="flex col mx-1 footer w-full">
+      <input
+        type="text"
+        class="border-2 focus:border-green-500 hover:border-green-500 col border-round"
+        pInputText
+        placeholder="Type message here..."
+        [(ngModel)]="newMessage"
+        (keyup)="$event.keyCode == 10 && sendMessage()"
+      />
+      <button
+        type="button"
+        pButton
+        pRipple
+        icon="pi pi-send font-bold"
+        class="bg-green-500 font-bold border-none border-round"
+        (click)="sendMessage()"
+        label="Send Message"
+      ></button>
+    </div>
+  </div>
 </div>
-
-

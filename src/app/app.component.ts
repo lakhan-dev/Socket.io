@@ -14,7 +14,7 @@ export class AppComponent {
   messageList: string[] = [];
   user_name:any;
   constructor(private chatService: ChatService) {
-    this.getName();
+    // this.getName();
   }
   getName(){
     this.user_name = prompt('Please enter your name');
