@@ -1,22 +1,21 @@
-
-const app = require('express')();
-const httpServer = require('http').createServer(app);
-const io = require('socket.io')(httpServer, {
-  cors: {origin : '*'}
+const app = require("express")();
+const httpServer = require("http").createServer(app);
+const io = require("socket.io")(httpServer, {
+  cors: { origin: "*" },
 });
 
 const port = process.env.PORT || 3000;
 users = [];
-io.on('connection', (socket) => {
-  console.log('a user connected');
+io.on("connection", (socket) => {
+  console.log("a user connected");
 
-  socket.on('message', (message) => {
-    console.log(message);
-    io.emit('message', `${socket.id.substr(0, 2)} said ${message}`);
+  socket.on("message", (data) => {
+    // console.log(data);
+    io.emit("message", `${data.user_name} : ${data.message}`);
   });
 
-  socket.on('disconnect', () => {
-    console.log('a user disconnected!');
+  socket.on("disconnect", () => {
+    console.log("a user disconnected!");
   });
 });
 
